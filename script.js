@@ -88,6 +88,33 @@ if (move.position === 'c3') {
 
 
     },
+    checkWin: function() {
+const player1 =PlayerHub.getPlayer(0);
+const player2 =PlayerHub.getPlayer(1);
+
+// loop through rows and check for a marker 3 in a row
+for (let i = 0;i <3;i++) {
+    // check rows for player 1 markers for 3 in a row
+if (gameboardStructure[i][0] === player1.marker &&
+gameboardStructure[i][1] === player1.marker  &&
+gameboardStructure[i][2] === player1.marker) {
+    alert(`${player1.name} is the winner!`)
+}
+}
+// check columns for 3 in a row 
+for (let i = 0; i < 3; i++) {
+if (gameboardStructure[0][i] === player1.marker &&
+    gameboardStructure[1][i] === player1.marker &&
+    gameboardStructure[2][i] === player1.marker) {
+        alert(`${player1.name} is the winner!`)
+
+
+    }
+
+
+}
+
+    },
     getSingleMove: function(index) {
 return ranksAndFilesAndMarker[index];
     },
@@ -246,8 +273,14 @@ PlayerHub.addPlayer('Spencer', 'O')
 // Gameflow.promptUser()
 
 // promptPlayer1ToMakeMove()
-// promptPlayer2ToMakeMove()
-Gameflow.promptPlayer1ToMakeMove();
-Gameflow.promptPlayer2ToMakeMove()
-Gameflow.promptPlayer1ToMakeMove();
-Gameflow.promptPlayer2ToMakeMove()
+// // promptPlayer2ToMakeMove()
+// Gameflow.promptPlayer1ToMakeMove();
+// Gameflow.promptPlayer2ToMakeMove()
+// Gameflow.promptPlayer1ToMakeMove();
+// Gameflow.promptPlayer2ToMakeMove()
+// Gameflow.promptPlayer1ToMakeMove();
+// Gameflow.promptPlayer2ToMakeMove()
+gameboard.addMove('a1', 'X')
+gameboard.addMove('b1', 'X')
+gameboard.addMove('c1', 'X')
+gameboard.checkWin()
