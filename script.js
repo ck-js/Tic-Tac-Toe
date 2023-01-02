@@ -85,17 +85,16 @@ if (move.position === 'c3') {
 }
 
 
-
-
     },
+
     checkWin: function() {
-const player1 =PlayerHub.getPlayer(0);
+const player1 =PlayerHub.getPlayer(0) || PlayerHub.getPlayer(1);
 const player2 =PlayerHub.getPlayer(1);
 
-// loop through rows and check for a marker 3 in a row
+
+// loop through rows and check for a marker 3 in a rowfor player 1
 for (let i = 0;i <3;i++) {
-    // check rows for player 1 markers for 3 in a row
-if (gameboardStructure[i][0] === player1.marker &&
+    if (gameboardStructure[i][0] === player1.marker &&
 gameboardStructure[i][1] === player1.marker  &&
 gameboardStructure[i][2] === player1.marker) {
     alert(`${player1.name} is the winner!`)
@@ -107,12 +106,60 @@ if (gameboardStructure[0][i] === player1.marker &&
     gameboardStructure[1][i] === player1.marker &&
     gameboardStructure[2][i] === player1.marker) {
         alert(`${player1.name} is the winner!`)
-
-
+    }
+}
+// check diagonals for 3 in a row top left to bottom right
+if (gameboardStructure[0][0] === player1.marker &&
+    gameboardStructure[1][1] === player1.marker &&
+    gameboardStructure[2][2] === player1.marker) {
+        alert(`${player1.name} is the winner!`)
+    }
+// check diagonals for 3 in a row top right to bottom left
+if (gameboardStructure[0][2] === player1.marker &&
+    gameboardStructure[1][1] === player1.marker &&
+    gameboardStructure[2][0] === player1.marker) {
+        alert(`${player1.name} is the winner!`)
+        
     }
 
 
+
+
+
+// loop through rows and check for a marker 3 in a rowfor player 2
+for (let i = 0;i <3;i++) {
+    // check rows for player 2 markers for 3 in a row
+if (gameboardStructure[i][0] === player2.marker &&
+gameboardStructure[i][1] === player2.marker  &&
+gameboardStructure[i][2] === player2.marker) {
+    alert(`${player2.name} is the winner!`)
 }
+}
+// check columns for 3 in a row 
+for (let i = 0; i < 3; i++) {
+if (gameboardStructure[0][i] === player2.marker &&
+    gameboardStructure[1][i] === player2.marker &&
+    gameboardStructure[2][i] === player2.marker) {
+        alert(`${player2.name} is the winner!`)
+    }
+}
+// check diagonals for 3 in a row top left to bottom right
+if (gameboardStructure[0][0] === player2.marker &&
+    gameboardStructure[1][1] === player2.marker &&
+    gameboardStructure[2][2] === player2.marker) {
+        alert(`${player2.name} is the winner!`)
+    }
+// check diagonals for 3 in a row top right to bottom left
+if (gameboardStructure[0][2] === player2.marker &&
+    gameboardStructure[1][1] === player2.marker &&
+    gameboardStructure[2][0] === player2.marker) {
+        alert(`${player2.name} is the winner!`)
+        
+    }
+
+
+
+
 
     },
     getSingleMove: function(index) {
@@ -272,15 +319,18 @@ PlayerHub.addPlayer('Spencer', 'O')
 // Gameflow.promptUser()
 // Gameflow.promptUser()
 
-// promptPlayer1ToMakeMove()
-// // promptPlayer2ToMakeMove()
-// Gameflow.promptPlayer1ToMakeMove();
-// Gameflow.promptPlayer2ToMakeMove()
-// Gameflow.promptPlayer1ToMakeMove();
-// Gameflow.promptPlayer2ToMakeMove()
-// Gameflow.promptPlayer1ToMakeMove();
-// Gameflow.promptPlayer2ToMakeMove()
-gameboard.addMove('a1', 'X')
-gameboard.addMove('b1', 'X')
-gameboard.addMove('c1', 'X')
+
+Gameflow.promptPlayer1ToMakeMove();
+Gameflow.promptPlayer2ToMakeMove()
+Gameflow.promptPlayer1ToMakeMove();
+Gameflow.promptPlayer2ToMakeMove()
+Gameflow.promptPlayer1ToMakeMove();
+gameboard.checkWin()
+Gameflow.promptPlayer2ToMakeMove()
+gameboard.checkWin()
+
+// dummy play moves
+// gameboard.addMove('c1', 'O')
+// gameboard.addMove('b2', 'O')
+// gameboard.addMove('a3', 'O')
 gameboard.checkWin()
