@@ -1,17 +1,22 @@
-// // gameboard object 
-// const gameboard = {
-//     // squares are labelled a, b, c for columns and 1,2,3 for rows
-//     ranksAndFilesAndMarker: [],
-//     addMove: function(position,marker) {
-// const move = addMove(position,marker)
-// this.ranksAndFilesAndMarker.push(move)
-//     },
-//     getSingleMove: function(index) {
-// return this.ranksAndFilesAndMarker[index];
-//     },getAllMoves: function() {
-//         return this.ranksAndFilesAndMarker;
-//     }
-//     }
+// DOM elements 
+const body = document.body;
+const gameboardOutput =document.querySelector('.gameboard-output')
+const gameboardSquares = document.querySelectorAll('.gameboard-ranks-files')
+.style.backgroundColor = 'blue'
+
+window.addEventListener('DOMContentLoaded', event => {
+    // add event listener to all squares
+
+
+})
+
+
+// body.removeChild(gameboardOutput)
+
+
+
+
+
 // gameboard object convert to module 
 const gameboard = (function() {
     // squares are labelled a, b, c for columns and 1,2,3 for rows
@@ -320,14 +325,14 @@ PlayerHub.addPlayer('Spencer', 'O')
 // Gameflow.promptUser()
 
 
-Gameflow.promptPlayer1ToMakeMove();
-Gameflow.promptPlayer2ToMakeMove()
-Gameflow.promptPlayer1ToMakeMove();
-Gameflow.promptPlayer2ToMakeMove()
-Gameflow.promptPlayer1ToMakeMove();
-gameboard.checkWin()
-Gameflow.promptPlayer2ToMakeMove()
-gameboard.checkWin()
+// Gameflow.promptPlayer1ToMakeMove();
+// Gameflow.promptPlayer2ToMakeMove()
+// Gameflow.promptPlayer1ToMakeMove();
+// Gameflow.promptPlayer2ToMakeMove()
+// Gameflow.promptPlayer1ToMakeMove();
+// gameboard.checkWin()
+// Gameflow.promptPlayer2ToMakeMove()
+// gameboard.checkWin()
 
 // dummy play moves
 // gameboard.addMove('c1', 'O')

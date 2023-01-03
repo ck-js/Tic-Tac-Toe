@@ -1,0 +1,14 @@
+.gameboard-output {
+    display: grid;
+    height: 600px;
+    width: 600px;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(3,1fr);
+grid-gap: 20px;
+
+    border: 10px solid white;
+
+}
+.gameboard-ranks-files {
+    background-color: yellowgreen;
+}
