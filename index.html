@@ -8,6 +8,33 @@
 </head>
 <body>
 
+<button onclick="openDialog()">Start Game</button>
+
+<dialog id="my-dialog">
+    <div class="dialog-content">
+        <h2>Dialog Box</h2>
+        <form action="" id="my-form">
+
+            <div class="form-control-wrapper">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name-input">
+            </div>
+            
+            <div class="form-control-wrapper">
+<label for="marker">Choose a Marker</label>
+<button type="button" id="X">X</button>
+<button type="button" id="O">O</button>
+
+<button type="submit">Player 2</button>
+        </form>
+
+    </div>
+<button type="button" onclick="closeDialog()" aria-label="Close menu"></button>
+
+</dialog>
+
+
+
     <div class="gameboard-output">
 <div id="a1" class="gameboard-ranks-files">
 

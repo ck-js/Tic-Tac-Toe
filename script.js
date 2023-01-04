@@ -2,16 +2,29 @@
 const body = document.body;
 const gameboardOutput =document.querySelector('.gameboard-output')
 const gameboardSquares = document.querySelectorAll('.gameboard-ranks-files')
-.style.backgroundColor = 'blue'
 
+// add loop to iterate over all gameboard squares
 window.addEventListener('DOMContentLoaded', event => {
     // add event listener to all squares
-
+gameboardSquares.forEach(gameboardSquare => {
+gameboardSquare.addEventListener('click', (event => {
+    const squareId = event.target.id; 
+    gameboard.addMove(squareId)
+}))
 
 })
 
-
+})
 // body.removeChild(gameboardOutput)
+
+// open menu dialog 
+const dialog = document.getElementById('my-dialog')
+function openDialog() {
+dialog.showModal();
+}
+function closeDialog() {
+    dialog.close();
+}
 
 
 
