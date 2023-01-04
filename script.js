@@ -17,7 +17,7 @@ gameboardSquare.addEventListener('click', (event => {
 })
 // body.removeChild(gameboardOutput)
 
-// open menu dialog 
+// function to open and close dialog modal form
 const dialog = document.getElementById('my-dialog')
 function openDialog() {
 dialog.showModal();
@@ -26,7 +26,21 @@ function closeDialog() {
     dialog.close();
 }
 
+// function to handle form submit 
+function handleSubmit(event) {
+    event.preventDefault();
+// get form input data
+const form = event.target;
+const name = form.name.value;
 
+form.addEventListener('click', event => {
+    console.log(event.target.id);
+})
+
+const marker = form.marker.value;
+console.log(name);
+console.log(marker);
+} 
 
 
 
@@ -237,7 +251,7 @@ return {
         PlayerHub.addPlayer(name, marker)
     
     },
-
+// prompt to get name and marker of players 
     promptUser: function() {
     const nameInput = prompt('Name', '');
     const markerInput = prompt('Marker', '');

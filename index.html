@@ -12,8 +12,8 @@
 
 <dialog id="my-dialog">
     <div class="dialog-content">
-        <h2>Dialog Box</h2>
-        <form action="" id="my-form">
+        <h2 id="dialog-header">Dialog Box</h2 iddia>
+        <form onsubmit="handleSubmit(event)" action="" id="my-form">
 
             <div class="form-control-wrapper">
                 <label for="name">Name</label>
@@ -22,8 +22,8 @@
             
             <div class="form-control-wrapper">
 <label for="marker">Choose a Marker</label>
-<button type="button" id="X">X</button>
-<button type="button" id="O">O</button>
+<button type="button" id="X" name="marker">X</button>
+<button type="button" id="O" name="marker">O</button>
 
 <button type="submit">Player 2</button>
         </form>
