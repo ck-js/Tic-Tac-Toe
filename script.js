@@ -1,17 +1,39 @@
-// gameboard object 
-const gameboard = {
+// // gameboard object 
+// const gameboard = {
+//     // squares are labelled a, b, c for columns and 1,2,3 for rows
+//     ranksAndFilesAndMarker: [],
+//     addMove: function(position,marker) {
+// const move = addMove(position,marker)
+// this.ranksAndFilesAndMarker.push(move)
+//     },
+//     getSingleMove: function(index) {
+// return this.ranksAndFilesAndMarker[index];
+//     },getAllMoves: function() {
+//         return this.ranksAndFilesAndMarker;
+//     }
+//     }
+// gameboard object convert to module 
+const gameboard = (function() {
     // squares are labelled a, b, c for columns and 1,2,3 for rows
-    ranksAndFilesAndMarker: [],
+    let ranksAndFilesAndMarker = [];
+    
+    return {
     addMove: function(position,marker) {
 const move = addMove(position,marker)
-this.ranksAndFilesAndMarker.push(move)
+ranksAndFilesAndMarker.push(move)
     },
     getSingleMove: function(index) {
-return this.ranksAndFilesAndMarker[index];
-    },getAllMoves: function() {
-        return this.ranksAndFilesAndMarker;
+return ranksAndFilesAndMarker[index];
+    },
+    getAllMoves: function() {
+        return ranksAndFilesAndMarker;
+    },
     }
-    }
+})();
+
+
+
+
 // factory function for add move method in gameboard object
 function addMove(position,marker) {
 
