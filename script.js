@@ -31,9 +31,6 @@ return ranksAndFilesAndMarker[index];
     }
 })();
 
-
-
-
 // factory function for add move method in gameboard object
 function addMove(position,marker) {
 
@@ -68,61 +65,96 @@ function createPlayer(name, marker) {
     }
 }
 
-//  object to create and store players from factory
-const playerHub = {
-playersArray: [],
-addPlayer: function(name, marker) {
-    const player = createPlayer(name, marker);
-  this.playersArray.push(player);  
-  
-},
-getPlayer: function(index)  {
-    return this.playersArray[index];
-},
-getAllPlayers: function() {
-    return this.playersArray;
-},
-
-};
+// module to store gameflow instances
+const Gameflow = (function() {
 
 
 
-// playerHub.addPlayer('MK', 'O')
+return {
+    // function to get player 1 info
+    
+    addPlayerToPlayerHub: function(name, marker) {
+        PlayerHub.addPlayer(name, marker)
+    
+    },
 
-// function to get player 1 info
-
-function promptUser() {
+    promptUser: function() {
     const nameInput = prompt('Name', '');
     const markerInput = prompt('Marker', '');
 
-    addPlayerToPlayerhub(nameInput, markerInput)
+    this.addPlayerToPlayerHub(nameInput, markerInput)
+
+},
+
 
 }
-function addPlayerToPlayerhub(name, marker) {
-    playerHub.addPlayer(name, marker)
+
+})();
+
+// module to store player object instance from factory
+var PlayerHub = (function() {
+    let playersArray = [];
+
+    function privateMethod() {
+         console.log(playersArray);
+    }
+
+return {
+
+    addPlayer: function(name, marker) {
+        const player = createPlayer(name, marker);
+      playersArray.push(player);  
+      
+    },
+    getPlayer: function(index)  {
+        return playersArray[index];
+    },
+    getAllPlayers: function() {
+        return playersArray;
+    },
 
 }
+    })();
+
+
+
+// // function to get player 1 info
+// function promptUser() {
+//     const nameInput = prompt('Name', '');
+//     const markerInput = prompt('Marker', '');
+
+//     addPlayerToPlayerHub(nameInput, markerInput)
+
+// }
+// function addPlayerToPlayerHub(name, marker) {
+//     PlayerHub.addPlayer(name, marker)
+
+// }
 
 // prompt user for name and marker
-playerHub.addPlayer('Mark', 'X')
-playerHub.addPlayer('Spencer', 'O')
+// PlayerHub.addPlayer('Mark', 'X')
+// PlayerHub.addPlayer('Spencer', 'O')
 
 // prompt player to  make a move on the gameboard
 function promptPlayer1ToMakeMove() {
-const input = prompt(`${playerHub.getPlayer(0).name} pick a square', '`);
-const marker = playerHub.getPlayer(0).getMarker();
+const input = prompt(`${PlayerHub.getPlayer(0).name} pick a square', '`);
+const marker = PlayerHub.getPlayer(0).getMarker();
 
-playerHub.getPlayer(0).setRanksAndFiles(input)
+PlayerHub.getPlayer(0).setRanksAndFiles(input)
 gameboard.addMove(input, marker)
 };
 function promptPlayer2ToMakeMove() {
-    const input = prompt(`${playerHub.getPlayer(1).name} pick a square', '`);
-    const marker = playerHub.getPlayer(1).getMarker();
+    const input = prompt(`${PlayerHub.getPlayer(1).name} pick a square', '`);
+    const marker = PlayerHub.getPlayer(1).getMarker();
 
-    playerHub.getPlayer(1).setRanksAndFiles(input)
+    PlayerHub.getPlayer(1).setRanksAndFiles(input)
     gameboard.addMove(input, marker)
     
     
     }
-promptPlayer1ToMakeMove()
-promptPlayer2ToMakeMove()
+
+Gameflow.promptUser()
+Gameflow.promptUser()
+
+// promptPlayer1ToMakeMove()
+// promptPlayer2ToMakeMove()
