@@ -25,6 +25,16 @@ const gameboard = (function() {
     return {
     addMove: function(position,marker) {
 const move = addMove(position,marker)
+
+// check that position is not played on yet
+
+for (let i = 0; i < ranksAndFilesAndMarker.length; i++) {
+if (ranksAndFilesAndMarker[i].position === move.position) {
+    return alert('Position is marked already!');
+}    
+ 
+}
+
 ranksAndFilesAndMarker.push(move);
 
 // check and assign marker to row a
