@@ -30,9 +30,16 @@ const move = addMove(position,marker)
 
 for (let i = 0; i < ranksAndFilesAndMarker.length; i++) {
 if (ranksAndFilesAndMarker[i].position === move.position) {
-    return alert('Position is marked already!');
+    alert('Position is marked already! Choose another square');
+
+    if (ranksAndFilesAndMarker[0]) {
+        Gameflow.promptPlayer2ToMakeMove();
+    }
+
+return; 
+    
 }    
- 
+
 }
 
 ranksAndFilesAndMarker.push(move);
