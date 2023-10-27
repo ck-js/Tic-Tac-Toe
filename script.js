@@ -23,18 +23,23 @@ const gameboard = (function() {
     ];
 
     return {
+        // adds move both arrays above with constraints
     addMove: function(position,marker) {
 const move = addMove(position,marker)
 
 // check that position is not played on yet
-
 for (let i = 0; i < ranksAndFilesAndMarker.length; i++) {
-if (ranksAndFilesAndMarker[i].position === move.position) {
+if (move.position === ranksAndFilesAndMarker[i].position) {
     alert('Position is marked already! Choose another square');
 
-    if (ranksAndFilesAndMarker[0]) {
-        Gameflow.promptPlayer2ToMakeMove();
-    }
+// check if moves marker matches the last marker in gameboard array
+if (ranksAndFilesAndMarker[ranksAndFilesAndMarker.length -1].marker === PlayerHub.getPlayer(0).marker) {
+    Gameflow.promptPlayer2ToMakeMove()
+} else if (ranksAndFilesAndMarker[ranksAndFilesAndMarker.length -1].marker === PlayerHub.getPlayer(1).marker) {
+    Gameflow.promptPlayer1ToMakeMove()
+}
+
+
 
 return; 
     
@@ -242,5 +247,7 @@ PlayerHub.addPlayer('Spencer', 'O')
 
 // promptPlayer1ToMakeMove()
 // promptPlayer2ToMakeMove()
+Gameflow.promptPlayer1ToMakeMove();
+Gameflow.promptPlayer2ToMakeMove()
 Gameflow.promptPlayer1ToMakeMove();
 Gameflow.promptPlayer2ToMakeMove()
