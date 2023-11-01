@@ -21,6 +21,15 @@ gameboardSquare.addEventListener('click', (event => {
 const dialog = document.getElementById('my-dialog')
 function openDialog() {
 dialog.showModal();
+
+// set focus on name input
+const header = document.getElementById('dialog-header')
+const input = document.getElementById('name-input')
+input.focus();
+
+
+
+
 }
 function closeDialog() {
     dialog.close();
@@ -32,14 +41,33 @@ function handleSubmit(event) {
 // get form input data
 const form = event.target;
 const name = form.name.value;
-
-form.addEventListener('click', event => {
-    console.log(event.target.id);
-})
-
-const marker = form.marker.value;
+// get value of checked radio button
+const marker = document.querySelector('input[name="marker"]:checked').value;
 console.log(name);
 console.log(marker);
+
+// add form values to playerhub module
+PlayerHub.addPlayer(name,marker)
+
+// change modal header depending on player
+let dialogHeader = document.getElementById('dialog-header')
+if (PlayerHub.getPlayer(0)) {
+dialogHeader.textContent = 'Player 2'
+}
+
+// determine if player 2 has been created 
+if (PlayerHub.getPlayer(1)) {
+    form.reset();
+    closeDialog();
+    
+} else {
+form.reset();
+openDialog();
+}
+
+// remove marker label and input for player 2
+const formNode = document.getElementById()
+
 } 
 
 
@@ -326,8 +354,8 @@ return {
 // }
 
 // prompt user for name and marker
-PlayerHub.addPlayer('Mark', 'X')
-PlayerHub.addPlayer('Spencer', 'O')
+// PlayerHub.addPlayer('Mark', 'X')
+// PlayerHub.addPlayer('Spencer', 'O')
 
 // prompt player to  make a move on the gameboard
 // function promptPlayer1ToMakeMove() {
