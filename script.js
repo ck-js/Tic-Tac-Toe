@@ -42,12 +42,22 @@ function handleSubmit(event) {
 const form = event.target;
 const name = form.name.value;
 // get value of checked radio button
-const marker = document.querySelector('input[name="marker"]:checked').value;
+
 console.log(name);
-console.log(marker);
+// console.log(marker);
 
 // add form values to playerhub module
-PlayerHub.addPlayer(name,marker)
+if (!PlayerHub.getPlayer(0)) {
+    const marker = document.querySelector('input[name="marker"]:checked').value;
+    PlayerHub.addPlayer(name,marker)
+}else if (PlayerHub.getPlayer(0).marker === 'X') {
+    PlayerHub.addPlayer(name,'O');
+} else if (PlayerHub.getPlayer(0).marker === 'O') {
+    PlayerHub.addPlayer(name,'X');
+}
+
+
+
 
 // change modal header depending on player
 let dialogHeader = document.getElementById('dialog-header')
@@ -57,18 +67,28 @@ dialogHeader.textContent = 'Player 2'
 
 // determine if player 2 has been created 
 if (PlayerHub.getPlayer(1)) {
+
     form.reset();
     closeDialog();
     
 } else {
-form.reset();
+    form.reset();
 openDialog();
+// remove marker label and input for player 2
+const formNode = document.getElementById('my-form')
+const wrapper2 = document.getElementById('wrapper-2')
+formNode.removeChild(wrapper2)
+
+
+
+
 }
 
-// remove marker label and input for player 2
-const formNode = document.getElementById()
 
 } 
+
+
+
 
 
 
@@ -339,58 +359,3 @@ return {
     })();
 
 
-
-// // function to get player 1 info
-// function promptUser() {
-//     const nameInput = prompt('Name', '');
-//     const markerInput = prompt('Marker', '');
-
-//     addPlayerToPlayerHub(nameInput, markerInput)
-
-// }
-// function addPlayerToPlayerHub(name, marker) {
-//     PlayerHub.addPlayer(name, marker)
-
-// }
-
-// prompt user for name and marker
-// PlayerHub.addPlayer('Mark', 'X')
-// PlayerHub.addPlayer('Spencer', 'O')
-
-// prompt player to  make a move on the gameboard
-// function promptPlayer1ToMakeMove() {
-// const input = prompt(`${PlayerHub.getPlayer(0).name} pick a square', '`);
-// const marker = PlayerHub.getPlayer(0).getMarker();
-
-// PlayerHub.getPlayer(0).setRanksAndFiles(input)
-// gameboard.addMove(input, marker)
-// };
-// function promptPlayer2ToMakeMove() {
-//     const input = prompt(`${PlayerHub.getPlayer(1).name} pick a square', '`);
-//     const marker = PlayerHub.getPlayer(1).getMarker();
-
-//     PlayerHub.getPlayer(1).setRanksAndFiles(input)
-//     gameboard.addMove(input, marker)
-    
-    
-//     }
-
-    // call the user to input name and marker
-// Gameflow.promptUser()
-// Gameflow.promptUser()
-
-
-// Gameflow.promptPlayer1ToMakeMove();
-// Gameflow.promptPlayer2ToMakeMove()
-// Gameflow.promptPlayer1ToMakeMove();
-// Gameflow.promptPlayer2ToMakeMove()
-// Gameflow.promptPlayer1ToMakeMove();
-// gameboard.checkWin()
-// Gameflow.promptPlayer2ToMakeMove()
-// gameboard.checkWin()
-
-// dummy play moves
-// gameboard.addMove('c1', 'O')
-// gameboard.addMove('b2', 'O')
-// gameboard.addMove('a3', 'O')
-gameboard.checkWin()
