@@ -35,57 +35,52 @@ function closeDialog() {
     dialog.close();
 }
 
-// function to handle form submit 
-function handleSubmit(event) {
-    event.preventDefault();
-// get form input data
-const form = event.target;
-const name = form.name.value;
-// get value of checked radio button
+// // function to handle form submit 
+// function handleSubmit(event) {
+//     event.preventDefault();
+// // get form input data
+// const form = event.target;
+// const name = form.name.value;
+// // get value of checked radio button
 
-console.log(name);
-// console.log(marker);
-
-// add form values to playerhub module
-if (!PlayerHub.getPlayer(0)) {
-    const marker = document.querySelector('input[name="marker"]:checked').value;
-    PlayerHub.addPlayer(name,marker)
-}else if (PlayerHub.getPlayer(0).marker === 'X') {
-    PlayerHub.addPlayer(name,'O');
-} else if (PlayerHub.getPlayer(0).marker === 'O') {
-    PlayerHub.addPlayer(name,'X');
-}
+// // add form values to playerhub module
+// if (!PlayerHub.getPlayer(0)) {
+//     const marker = document.querySelector('input[name="marker"]:checked').value;
+//     PlayerHub.addPlayer(name,marker)
+// }else if (PlayerHub.getPlayer(0).marker === 'X') {
+//     PlayerHub.addPlayer(name,'O');
+// } else if (PlayerHub.getPlayer(0).marker === 'O') {
+//     PlayerHub.addPlayer(name,'X');
+// }
 
 
+// // change modal header depending on player
+// let dialogHeader = document.getElementById('dialog-header')
+// if (PlayerHub.getPlayer(0)) {
+// dialogHeader.textContent = 'Player 2'
+// }
 
+// // determine if player 2 has been created 
+// if (PlayerHub.getPlayer(1)) {
 
-// change modal header depending on player
-let dialogHeader = document.getElementById('dialog-header')
-if (PlayerHub.getPlayer(0)) {
-dialogHeader.textContent = 'Player 2'
-}
-
-// determine if player 2 has been created 
-if (PlayerHub.getPlayer(1)) {
-
-    form.reset();
-    closeDialog();
+//     form.reset();
+//     closeDialog();
     
-} else {
-    form.reset();
-openDialog();
-// remove marker label and input for player 2
-const formNode = document.getElementById('my-form')
-const wrapper2 = document.getElementById('wrapper-2')
-formNode.removeChild(wrapper2)
+// } else {
+//     form.reset();
+// openDialog();
+// // remove marker label and input for player 2
+// const formNode = document.getElementById('my-form')
+// const wrapper2 = document.getElementById('wrapper-2')
+// formNode.removeChild(wrapper2)
 
 
 
 
-}
+// }
 
 
-} 
+// } 
 
 
 
@@ -294,19 +289,90 @@ const Gameflow = (function() {
 
 return {
 
-// takes input from prompt user function to add to playerhub module    
-    addPlayerToPlayerHub: function(name, marker) {
-        PlayerHub.addPlayer(name, marker)
+// // takes input from prompt user function to add to playerhub module    
+//     addPlayerToPlayerHub: function(name, marker) {
+//         PlayerHub.addPlayer(name, marker)
     
-    },
-// prompt to get name and marker of players 
-    promptUser: function() {
-    const nameInput = prompt('Name', '');
-    const markerInput = prompt('Marker', '');
+//     },
+// // prompt to get name and marker of players 
+//     promptUser: function() {
+//     const nameInput = prompt('Name', '');
+//     const markerInput = prompt('Marker', '');
 
-    this.addPlayerToPlayerHub(nameInput, markerInput)
+//     this.addPlayerToPlayerHub(nameInput, markerInput)
+
+// },
+
+// function to handle form submit 
+handleSubmit: function(event) {
+    event.preventDefault();
+// get form input data
+const form = event.target;
+const name = form.name.value;
+// get value of checked radio button
+
+// add form values to playerhub module
+if (!PlayerHub.getPlayer(0)) {
+    const marker = document.querySelector('input[name="marker"]:checked').value;
+    PlayerHub.addPlayer(name,marker)
+}else if (PlayerHub.getPlayer(0).marker === 'X') {
+    PlayerHub.addPlayer(name,'O');
+} else if (PlayerHub.getPlayer(0).marker === 'O') {
+    PlayerHub.addPlayer(name,'X');
+}
+
+// // render elements displayed on window depending on state 
+// // determine if player 2 has been created 
+// if (PlayerHub.getPlayer(1)) {
+
+//     form.reset();
+//     closeDialog();
+    
+// } else {
+//     form.reset();
+// openDialog();
+// // remove marker label and input for player 2
+// const formNode = document.getElementById('my-form')
+// const wrapper2 = document.getElementById('wrapper-2')
+// formNode.removeChild(wrapper2)
+
+// }
+
+
+this.changeDialogHeader();
+this.renderModalDisplay();
+},
+renderModalDisplay: function() {
+const form = document.getElementById('my-form')
+
+// render elements displayed on window depending on state 
+// determine if player 2 has been created 
+if (PlayerHub.getPlayer(1)) {
+
+    form.reset();
+    closeDialog();
+    
+} else {
+    form.reset();
+openDialog();
+// remove marker label and input for player 2
+const formNode = document.getElementById('my-form')
+const wrapper2 = document.getElementById('wrapper-2')
+formNode.removeChild(wrapper2)
+
+}
+
 
 },
+// change modal header depending on player
+changeDialogHeader: function() {
+let dialogHeader = document.getElementById('dialog-header')
+if (PlayerHub.getPlayer(0)) {
+dialogHeader.textContent = 'Player 2'
+}
+},
+
+
 // function to prompt user to make a move 
  promptPlayer1ToMakeMove: function() {
     const input = prompt(`${PlayerHub.getPlayer(0).name} pick a square', '`);
