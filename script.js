@@ -1,21 +1,23 @@
-// DOM elements 
-const body = document.body;
-const gameboardOutput =document.querySelector('.gameboard-output')
-const gameboardSquares = document.querySelectorAll('.gameboard-ranks-files')
 
-// add loop to iterate over all gameboard squares
-window.addEventListener('DOMContentLoaded', event => {
-    // add event listener to all squares
-gameboardSquares.forEach(gameboardSquare => {
-gameboardSquare.addEventListener('click', (event => {
-    const squareId = event.target.id; 
-    gameboard.addMove(squareId)
-}))
 
-})
+// // DOM elements 
+// const body = document.body;
+// const gameboardOutput =document.querySelector('.gameboard-output')
+// const gameboardSquares = document.querySelectorAll('.gameboard-ranks-files')
 
-})
-// body.removeChild(gameboardOutput)
+// // add loop to iterate over all gameboard squares
+// window.addEventListener('DOMContentLoaded', event => {
+//     // add event listener to all squares
+// gameboardSquares.forEach(gameboardSquare => {
+// gameboardSquare.addEventListener('click', (event => {
+//     const squareId = event.target.id; 
+//     gameboard.addMove(squareId)
+// }))
+
+// })
+
+// })
+// // body.removeChild(gameboardOutput)
 
 // function to open and close dialog modal form
 const dialog = document.getElementById('my-dialog')
@@ -28,60 +30,10 @@ const input = document.getElementById('name-input')
 input.focus();
 
 
-
-
 }
 function closeDialog() {
     dialog.close();
 }
-
-// // function to handle form submit 
-// function handleSubmit(event) {
-//     event.preventDefault();
-// // get form input data
-// const form = event.target;
-// const name = form.name.value;
-// // get value of checked radio button
-
-// // add form values to playerhub module
-// if (!PlayerHub.getPlayer(0)) {
-//     const marker = document.querySelector('input[name="marker"]:checked').value;
-//     PlayerHub.addPlayer(name,marker)
-// }else if (PlayerHub.getPlayer(0).marker === 'X') {
-//     PlayerHub.addPlayer(name,'O');
-// } else if (PlayerHub.getPlayer(0).marker === 'O') {
-//     PlayerHub.addPlayer(name,'X');
-// }
-
-
-// // change modal header depending on player
-// let dialogHeader = document.getElementById('dialog-header')
-// if (PlayerHub.getPlayer(0)) {
-// dialogHeader.textContent = 'Player 2'
-// }
-
-// // determine if player 2 has been created 
-// if (PlayerHub.getPlayer(1)) {
-
-//     form.reset();
-//     closeDialog();
-    
-// } else {
-//     form.reset();
-// openDialog();
-// // remove marker label and input for player 2
-// const formNode = document.getElementById('my-form')
-// const wrapper2 = document.getElementById('wrapper-2')
-// formNode.removeChild(wrapper2)
-
-
-
-
-// }
-
-
-// } 
-
 
 
 
@@ -98,6 +50,50 @@ const gameboard = (function() {
     ];
 
     return {
+
+// DOM elements 
+renderDOM: function() {
+const body = document.body;
+const gameboardOutput =document.querySelector('.gameboard-output')
+const gameboardSquares = document.querySelectorAll('.gameboard-ranks-files')
+
+// add loop to iterate over all gameboard squares
+window.addEventListener('DOMContentLoaded', event => {
+    // add event listener to all squares
+gameboardSquares.forEach(gameboardSquare => {
+gameboardSquare.addEventListener('click', (event => {
+    const squareElement = event.target;
+    const squareId = event.target.id; 
+    const gameboardLength = this.getAllMoves().length;
+    const player1 = PlayerHub.getPlayer(0);
+    const player2 = PlayerHub.getPlayer(1);
+// determine whose turn it is currently
+    if (gameboardLength === 0) {
+
+    gameboard.addMove(squareId, player1.marker)
+squareElement.textContent = `${player1.marker}`
+
+    }
+
+    if (gameboardLength === 1) {
+
+        gameboard.addMove(squareId, player2.marker)
+    squareElement.textContent = `${player2.marker}`
+    
+        }
+
+
+
+
+}))
+
+})
+
+})
+// body.removeChild(gameboardOutput)
+
+    },
+
         // adds move both arrays above with constraints
     addMove: function(position,marker) {
 const move = addMove(position,marker)
@@ -289,19 +285,11 @@ const Gameflow = (function() {
 
 return {
 
-// // takes input from prompt user function to add to playerhub module    
-//     addPlayerToPlayerHub: function(name, marker) {
-//         PlayerHub.addPlayer(name, marker)
+// helper function to take form input to playerhub module
+    addPlayerToPlayerHub: function(name, marker) {
+        PlayerHub.addPlayer(name, marker)
     
-//     },
-// // prompt to get name and marker of players 
-//     promptUser: function() {
-//     const nameInput = prompt('Name', '');
-//     const markerInput = prompt('Marker', '');
-
-//     this.addPlayerToPlayerHub(nameInput, markerInput)
-
-// },
+    },
 
 // function to handle form submit 
 handleSubmit: function(event) {
@@ -314,11 +302,14 @@ const name = form.name.value;
 // add form values to playerhub module
 if (!PlayerHub.getPlayer(0)) {
     const marker = document.querySelector('input[name="marker"]:checked').value;
-    PlayerHub.addPlayer(name,marker)
+    // PlayerHub.addPlayer(name,marker)
+    this.addPlayerToPlayerHub(name,marker)
 }else if (PlayerHub.getPlayer(0).marker === 'X') {
-    PlayerHub.addPlayer(name,'O');
+    // PlayerHub.addPlayer(name,'O');
+    this.addPlayerToPlayerHub(name,'O')
 } else if (PlayerHub.getPlayer(0).marker === 'O') {
-    PlayerHub.addPlayer(name,'X');
+    // PlayerHub.addPlayer(name,'X');
+    this.addPlayerToPlayerHub(name,'X')
 }
 
 // // render elements displayed on window depending on state 
@@ -375,7 +366,9 @@ dialogHeader.textContent = 'Player 2'
 
 // function to prompt user to make a move 
  promptPlayer1ToMakeMove: function() {
-    const input = prompt(`${PlayerHub.getPlayer(0).name} pick a square', '`);
+    // const input = prompt(`${PlayerHub.getPlayer(0).name} pick a square', '`);
+    alert('Player 1 make a move')
+
     const marker = PlayerHub.getPlayer(0).getMarker();
     
     PlayerHub.getPlayer(0).setRanksAndFiles(input)
@@ -425,3 +418,9 @@ return {
     })();
 
 
+// create 2 players 
+Gameflow.addPlayerToPlayerHub('Sia', 'X')
+Gameflow.addPlayerToPlayerHub('Faff', 'O')
+
+// make player 1 make first move
+gameboard.renderDOM()
