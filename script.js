@@ -74,13 +74,40 @@ gameboardSquare.addEventListener('click', (event => {
 squareElement.textContent = `${player1.marker}`
 
     }
-
     if (gameboardLength === 1) {
 
         gameboard.addMove(squareId, player2.marker)
     squareElement.textContent = `${player2.marker}`
     
         }
+        if (gameboardLength === 2) {
+
+            gameboard.addMove(squareId, player1.marker)
+        squareElement.textContent = `${player1.marker}`
+        
+            }
+            if (gameboardLength === 3) {
+        
+                gameboard.addMove(squareId, player2.marker)
+            squareElement.textContent = `${player2.marker}`
+            
+                }
+                if (gameboardLength === 4) {
+
+                    gameboard.addMove(squareId, player1.marker)
+                squareElement.textContent = `${player1.marker}`
+                
+                this.checkWin();
+                    }
+                    if (gameboardLength === 5) {
+                
+                        gameboard.addMove(squareId, player2.marker)
+                    squareElement.textContent = `${player2.marker}`
+                    
+                    this.checkWin();
+                        }
+
+
 
 
 
