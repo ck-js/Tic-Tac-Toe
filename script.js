@@ -48,10 +48,20 @@ const gameboard = (function() {
     ['','',''],
     ['','',''],
     ];
+// store rounds won
+let player1WinCounter = 3;
+    let player2WinCounter = 0;
 
     return {
+// update the scoreboard
+updateScoreboard: function() {
+    const player1Element = document.getElementById('scoreboard-p1')
+    const player2Element = document.getElementById('scoreboard-p2')
+    player1Element.textContent = `${player1WinCounter}`
 
-// DOM elements 
+},
+
+// DOM elements of gameboard squares
 renderDOM: function() {
 const body = document.body;
 const gameboardOutput =document.querySelector('.gameboard-output')
@@ -192,7 +202,7 @@ if (move.position === 'c3') {
 
 
     },
-
+    
     checkWin: function() {
 const player1 =PlayerHub.getPlayer(0) || PlayerHub.getPlayer(1);
 const player2 =PlayerHub.getPlayer(1);
@@ -204,6 +214,8 @@ for (let i = 0;i <3;i++) {
 gameboardStructure[i][1] === player1.marker  &&
 gameboardStructure[i][2] === player1.marker) {
     alert(`${player1.name} is the winner!`)
+    this.updateScoreboard()
+    
 }
 }
 // check columns for 3 in a row 
@@ -460,3 +472,4 @@ Gameflow.addPlayerToPlayerHub('Faff', 'O')
 // make player 1 make first move
 gameboard.renderDOM()
 gameboard.updateNav();
+gameboard.updateScoreboard();
