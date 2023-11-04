@@ -120,6 +120,14 @@ squareElement.textContent = `${player1.marker}`
 // body.removeChild(gameboardOutput)
 
     },
+    // update the gameboard nav with nae and marker
+    updateNav: function() {
+        const player1Element = document.getElementById('player-1')
+        const player2Element = document.getElementById('player-2')
+
+        player1Element.textContent = `${PlayerHub.getPlayer(0).name}: ${PlayerHub.getPlayer(0).marker}`
+        player2Element.textContent = `${PlayerHub.getPlayer(1).name}: ${PlayerHub.getPlayer(1).marker}`
+    },
 
         // adds move both arrays above with constraints
     addMove: function(position,marker) {
@@ -451,3 +459,4 @@ Gameflow.addPlayerToPlayerHub('Faff', 'O')
 
 // make player 1 make first move
 gameboard.renderDOM()
+gameboard.updateNav();
