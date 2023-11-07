@@ -1,3 +1,5 @@
+const delay = 'does the speech delay?'
+
 
 
 // // DOM elements 
@@ -49,7 +51,7 @@ const gameboard = (function() {
     ['','',''],
     ];
 // store rounds won
-let player1WinCounter = 3;
+let player1WinCounter = 0;
     let player2WinCounter = 0;
 
     return {
@@ -57,8 +59,13 @@ let player1WinCounter = 3;
 updateScoreboard: function() {
     const player1Element = document.getElementById('scoreboard-p1')
     const player2Element = document.getElementById('scoreboard-p2')
-    player1Element.textContent = `${player1WinCounter}`
 
+
+    player1Element.textContent = ` ${PlayerHub.getPlayer(0).name}: ${player1WinCounter}`
+    player2Element.textContent = ` ${PlayerHub.getPlayer(1).name}: ${player2WinCounter}`
+
+    
+    
 },
 
 // DOM elements of gameboard squares
@@ -214,6 +221,9 @@ for (let i = 0;i <3;i++) {
 gameboardStructure[i][1] === player1.marker  &&
 gameboardStructure[i][2] === player1.marker) {
     alert(`${player1.name} is the winner!`)
+
+    // update the counter variable and display on DOM
+    player1WinCounter++;
     this.updateScoreboard()
     
 }
@@ -224,6 +234,10 @@ if (gameboardStructure[0][i] === player1.marker &&
     gameboardStructure[1][i] === player1.marker &&
     gameboardStructure[2][i] === player1.marker) {
         alert(`${player1.name} is the winner!`)
+
+        // update the counter variable and display on DOM
+    player1WinCounter++;
+    this.updateScoreboard()
     }
 }
 // check diagonals for 3 in a row top left to bottom right
@@ -231,12 +245,20 @@ if (gameboardStructure[0][0] === player1.marker &&
     gameboardStructure[1][1] === player1.marker &&
     gameboardStructure[2][2] === player1.marker) {
         alert(`${player1.name} is the winner!`)
+
+        // update the counter variable and display on DOM
+    player1WinCounter++;
+    this.updateScoreboard()
     }
 // check diagonals for 3 in a row top right to bottom left
 if (gameboardStructure[0][2] === player1.marker &&
     gameboardStructure[1][1] === player1.marker &&
     gameboardStructure[2][0] === player1.marker) {
         alert(`${player1.name} is the winner!`)
+
+        // update the counter variable and display on DOM
+    player1WinCounter++;
+    this.updateScoreboard()
         
     }
 
@@ -251,6 +273,10 @@ if (gameboardStructure[i][0] === player2.marker &&
 gameboardStructure[i][1] === player2.marker  &&
 gameboardStructure[i][2] === player2.marker) {
     alert(`${player2.name} is the winner!`)
+
+    // update the counter variable and display on DOM
+    player2WinCounter++;
+    this.updateScoreboard()
 }
 }
 // check columns for 3 in a row 
@@ -259,6 +285,10 @@ if (gameboardStructure[0][i] === player2.marker &&
     gameboardStructure[1][i] === player2.marker &&
     gameboardStructure[2][i] === player2.marker) {
         alert(`${player2.name} is the winner!`)
+
+        // update the counter variable and display on DOM
+    player2WinCounter++;
+    this.updateScoreboard()
     }
 }
 // check diagonals for 3 in a row top left to bottom right
@@ -266,12 +296,20 @@ if (gameboardStructure[0][0] === player2.marker &&
     gameboardStructure[1][1] === player2.marker &&
     gameboardStructure[2][2] === player2.marker) {
         alert(`${player2.name} is the winner!`)
+
+        // update the counter variable and display on DOM
+    player2WinCounter++;
+    this.updateScoreboard()
     }
 // check diagonals for 3 in a row top right to bottom left
 if (gameboardStructure[0][2] === player2.marker &&
     gameboardStructure[1][1] === player2.marker &&
     gameboardStructure[2][0] === player2.marker) {
         alert(`${player2.name} is the winner!`)
+
+        // update the counter variable and display on DOM
+    player2WinCounter++;
+    this.updateScoreboard()
         
     }
 
