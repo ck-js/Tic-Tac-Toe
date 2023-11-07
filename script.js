@@ -53,8 +53,37 @@ const gameboard = (function() {
 // store rounds won
 let player1WinCounter = 0;
     let player2WinCounter = 0;
+    let roundCounter = 0;
 
     return {
+// clear the text content of DOM squares
+clearSquareTextContent: function() {
+    const gameboardSquares = document.querySelectorAll('.gameboard-ranks-files')
+    gameboardSquares.forEach(gameboardSquare => {
+        gameboardSquare.textContent = '';
+    })
+
+
+},
+
+
+
+// clear the gameboard values to play again
+clearGameboard: function() {
+ranksAndFilesAndMarker.length = 0;
+gameboardStructure.length = 0;
+
+gameboardStructure = [
+    ['','',''],
+    ['','',''],
+    ['','',''],
+    ];
+    this.clearSquareTextContent();
+
+
+
+},
+
 // update the scoreboard
 updateScoreboard: function() {
     const player1Element = document.getElementById('scoreboard-p1')
@@ -369,6 +398,13 @@ function createPlayer(name, marker) {
 const Gameflow = (function() {
 
 return {
+
+    // fuction to play again 
+    playAgain: function() {
+gameboard.clearGameboard();
+        
+    },
+
 
 // helper function to take form input to playerhub module
     addPlayerToPlayerHub: function(name, marker) {
