@@ -1,4 +1,21 @@
+:root {
+    background-color: black;
+    color: white;
+
+}
+
+.gameboard-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
+    
+}
+
+
+
 .gameboard-output {
+    grid-row: 1/4;
+    grid-column: 1/2;
     display: grid;
     height: 600px;
     width: 600px;
@@ -10,10 +27,48 @@ grid-gap: 20px;
 
 }
 .gameboard-ranks-files {
-    background-color: yellowgreen;
-    display: flex;
+background-color: yellowgreen;
+display: flex;
     justify-content: center;
     align-items: center;
     font-size: 5em;
 
 }
+
+#scoreboard {
+    grid-row: 1;
+    grid-column: 2/4;
+    
+    font-size: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border: 5px solid white;
+    
+    
+}
+#scoreboard h2 {
+    margin: 0;
+}
+#scoreboard div {
+    color: pink;
+    font-size: 0.8em;
+    text-align: left;
+}
+
+.gameboard-nav-container {
+    grid-column: 2/4;
+    grid-row: 2;
+    text-align: center;
+    font-size: 2rem;
+    border: 5px solid white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+
+

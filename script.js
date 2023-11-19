@@ -1,7 +1,3 @@
-const delay = 'does the speech delay?'
-
-
-
 // // DOM elements 
 // const body = document.body;
 // const gameboardOutput =document.querySelector('.gameboard-output')
@@ -56,6 +52,16 @@ let player1WinCounter = 0;
     let roundCounter = 0;
 
     return {
+
+        // increase the round counter 
+        increaseRoundCounter: function() {
+            roundCounter++;
+            this.updateScoreboard();
+
+        },
+
+
+
 // clear the text content of DOM squares
 clearSquareTextContent: function() {
     const gameboardSquares = document.querySelectorAll('.gameboard-ranks-files')
@@ -63,10 +69,7 @@ clearSquareTextContent: function() {
         gameboardSquare.textContent = '';
     })
 
-
 },
-
-
 
 // clear the gameboard values to play again
 clearGameboard: function() {
@@ -81,18 +84,18 @@ gameboardStructure = [
     this.clearSquareTextContent();
 
 
-
 },
 
 // update the scoreboard
 updateScoreboard: function() {
     const player1Element = document.getElementById('scoreboard-p1')
     const player2Element = document.getElementById('scoreboard-p2')
+    const roundCounterElement = document.getElementById('round-counter')
 
 
-    player1Element.textContent = ` ${PlayerHub.getPlayer(0).name}: ${player1WinCounter}`
+player1Element.textContent = ` ${PlayerHub.getPlayer(0).name}: ${player1WinCounter}`
     player2Element.textContent = ` ${PlayerHub.getPlayer(1).name}: ${player2WinCounter}`
-
+roundCounterElement.textContent = `Round: ${roundCounter}`;
     
     
 },
@@ -401,7 +404,9 @@ return {
 
     // fuction to play again 
     playAgain: function() {
+gameboard.increaseRoundCounter();
 gameboard.clearGameboard();
+
         
     },
 
@@ -547,3 +552,5 @@ Gameflow.addPlayerToPlayerHub('Faff', 'O')
 gameboard.renderDOM()
 gameboard.updateNav();
 gameboard.updateScoreboard();
+
+
