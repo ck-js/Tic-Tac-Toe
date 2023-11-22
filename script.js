@@ -27,7 +27,7 @@ const header = document.getElementById('dialog-header')
 const input = document.getElementById('name-input')
 input.focus();
 
-
+startGameDialog.close();
 }
 function closeDialog() {
     dialog.close();
@@ -546,9 +546,18 @@ return {
 
 // function to open start game dialog on page load
 const startGameDialog = document.getElementById('start-game-dialog')
+function closeStartGameDialog() {
+// close method is not working
+// alternative try remove the dialog from dom
+document.body.removeChild(startGameDialog)
+
+    }
 function openStartGameDialog() {
 startGameDialog.showModal();
+
+
 }
+
 openStartGameDialog();
 
 

@@ -8,8 +8,10 @@
 </head>
 <body>
 <dialog id="start-game-dialog">
-    
-    <button onclick="openDialog()">Start Game</button>
+    <div id="start-game-container">
+        
+        <button onclick="openDialog(), closeStartGameDialog()">Start Game</button>
+    </div>
 </dialog>
 
 
@@ -26,8 +28,8 @@
             
             <div id="wrapper-2" class="form-control-wrapper">
 <label for="marker">Choose a Marker</label>
-<input type="radio" id="X" name="marker" value="X">X</button>
-<input type="radio" id="O" name="marker" value="O">O</button>
+<input type="radio" id="X" name="marker" value="X" aria-label="x">X</button>
+<input type="radio" id="O" name="marker" value="O" aria-label="o">O</button>
             </div>
 
 <button type="submit">Player 2</button>

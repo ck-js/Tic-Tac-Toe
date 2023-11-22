@@ -102,6 +102,25 @@ border: 5px solid pink;
     font-size: 3rem;
     color: yellowgreen;
 border: 3px solid yellowgreen;
-
-
+}
+#my-dialog {
+    height: 60vh;
+    width: 50vw;
+    background-color: black;
+    border: 3px solid yellowgreen;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    
+}
+.form-control-wrapper {
+    display: flex;
+    flex-direction: column;
+    
+}
+#my-dialog h2 {
+    font-size: 3rem;
+    text-align: center;
 }
