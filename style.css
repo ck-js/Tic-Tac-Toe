@@ -83,4 +83,25 @@ border: 5px solid pink;
     font-size: 2rem;
 }
 
+#start-game-dialog {
+    height: 60vh;
+    width: 50vw;
+    background-color: black;
+    border: 3px solid yellowgreen;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+
+}
+#start-game-dialog button {
+    height: 20vh;
+    width: 30vw;
+    background-color: black;
+    font-size: 3rem;
+    color: yellowgreen;
+border: 3px solid yellowgreen;
+
+
+}

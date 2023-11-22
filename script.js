@@ -544,6 +544,17 @@ return {
     })();
 
 
+// function to open start game dialog on page load
+const startGameDialog = document.getElementById('start-game-dialog')
+function openStartGameDialog() {
+startGameDialog.showModal();
+}
+openStartGameDialog();
+
+
+
+
+
 // create 2 players 
 Gameflow.addPlayerToPlayerHub('Sia', 'X')
 Gameflow.addPlayerToPlayerHub('Faff', 'O')
