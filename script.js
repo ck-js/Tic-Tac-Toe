@@ -18,8 +18,9 @@
 // // body.removeChild(gameboardOutput)
 
 // function to open and close dialog modal form
-const dialog = document.getElementById('my-dialog')
+
 function openDialog() {
+    const dialog = document.getElementById('my-dialog')    
 dialog.showModal();
 
 // set focus on name input
@@ -29,10 +30,11 @@ input.focus();
 
 startGameDialog.close();
 }
+
 function closeDialog() {
+    const dialog = document.getElementById('my-dialog')
     dialog.close();
 }
-
 
 
 
@@ -402,7 +404,7 @@ const Gameflow = (function() {
 
 return {
 
-    // fuction to play again 
+    // function to play again 
     playAgain: function() {
 gameboard.increaseRoundCounter();
 gameboard.clearGameboard();
@@ -438,23 +440,6 @@ if (!PlayerHub.getPlayer(0)) {
     this.addPlayerToPlayerHub(name,'X')
 }
 
-// // render elements displayed on window depending on state 
-// // determine if player 2 has been created 
-// if (PlayerHub.getPlayer(1)) {
-
-//     form.reset();
-//     closeDialog();
-    
-// } else {
-//     form.reset();
-// openDialog();
-// // remove marker label and input for player 2
-// const formNode = document.getElementById('my-form')
-// const wrapper2 = document.getElementById('wrapper-2')
-// formNode.removeChild(wrapper2)
-
-// }
-
 
 this.changeDialogHeader();
 this.renderModalDisplay();
@@ -467,20 +452,25 @@ const form = document.getElementById('my-form')
 if (PlayerHub.getPlayer(1)) {
 
     form.reset();
-    closeDialog();
-    
+    // closeDialog();
+
+    // remove form dialog from dom
+    const formDialog = document.getElementById('my-dialog')
+    document.body.removeChild(formDialog)
+
+this.updateDOM();    
 } else {
     form.reset();
 openDialog();
+
 // remove marker label and input for player 2
 const formNode = document.getElementById('my-form')
 const wrapper2 = document.getElementById('wrapper-2')
 formNode.removeChild(wrapper2)
 
 }
-
-
 },
+
 // change modal header depending on player
 changeDialogHeader: function() {
 let dialogHeader = document.getElementById('dialog-header')
@@ -509,6 +499,24 @@ dialogHeader.textContent = 'Player 2'
         
         
         },
+        updateDOM: function() {
+const player1Scoreboard = document.getElementById('scoreboard-p1')
+const player2Scoreboard = document.getElementById('scoreboard-p2')
+
+const player1NavElement = document.getElementById('player-1-nav-name')
+const player2NavElement = document.getElementById('player-2-nav-name')
+
+
+player1Scoreboard.textContent = `${PlayerHub.getPlayer(0).name}: 0`
+player2Scoreboard.textContent = `${PlayerHub.getPlayer(1).name}: 0`
+
+player1NavElement.textContent = `${PlayerHub.getPlayer(0).name}: ${PlayerHub.getPlayer(0).marker}`;
+player2NavElement.textContent = `${PlayerHub.getPlayer(1).name}: ${PlayerHub.getPlayer(1).marker}`;
+
+
+        },
+        
+
 
 
 
@@ -558,19 +566,17 @@ startGameDialog.showModal();
 
 }
 
+// openStartGameDialog();
 openStartGameDialog();
 
 
-
-
-
 // create 2 players 
-Gameflow.addPlayerToPlayerHub('Sia', 'X')
-Gameflow.addPlayerToPlayerHub('Faff', 'O')
+// Gameflow.addPlayerToPlayerHub('Sia', 'X')
+// Gameflow.addPlayerToPlayerHub('Faff', 'O')
 
 // make player 1 make first move
-gameboard.renderDOM()
-gameboard.updateNav();
-gameboard.updateScoreboard();
+// gameboard.renderDOM()
+// gameboard.updateNav();
+// gameboard.updateScoreboard();
 
 
