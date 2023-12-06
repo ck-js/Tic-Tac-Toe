@@ -15,7 +15,7 @@
 // })
 
 // })
-// // body.removeChild(gameboardOutput)
+
 
 // function to open and close dialog modal form
 
@@ -51,7 +51,7 @@ const gameboard = (function() {
 // store rounds won
 let player1WinCounter = 0;
     let player2WinCounter = 0;
-    let roundCounter = 0;
+    let roundCounter = 1;
 
     return {
 
@@ -61,8 +61,6 @@ let player1WinCounter = 0;
             this.updateScoreboard();
 
         },
-
-
 
 // clear the text content of DOM squares
 clearSquareTextContent: function() {
@@ -95,8 +93,8 @@ updateScoreboard: function() {
     const roundCounterElement = document.getElementById('round-counter')
 
 
-player1Element.textContent = ` ${PlayerHub.getPlayer(0).name}: ${player1WinCounter}`
-    player2Element.textContent = ` ${PlayerHub.getPlayer(1).name}: ${player2WinCounter}`
+player1Element.textContent = ` ${PlayerHub.getPlayer(0).name}: ${player1WinCounter}`;
+    player2Element.textContent = ` ${PlayerHub.getPlayer(1).name}: ${player2WinCounter}`;
 roundCounterElement.textContent = `Round: ${roundCounter}`;
     
     
@@ -575,8 +573,16 @@ openStartGameDialog();
 // Gameflow.addPlayerToPlayerHub('Faff', 'O')
 
 // make player 1 make first move
-// gameboard.renderDOM()
-// gameboard.updateNav();
-// gameboard.updateScoreboard();
+gameboard.renderDOM()
+gameboard.updateNav();
+gameboard.updateScoreboard();
 
 
+// copy playAgain function as global scope
+function playAgain() {
+    gameboard.increaseRoundCounter();
+    gameboard.clearGameboard();
+    
+
+            
+        }
