@@ -149,16 +149,37 @@ squareElement.textContent = `${player1.marker}`
                 this.checkWin();
                     }
                     if (gameboardLength === 5) {
-                
                         gameboard.addMove(squareId, player2.marker)
                     squareElement.textContent = `${player2.marker}`
                     
                     this.checkWin();
                         }
+                        if (gameboardLength === 6) {
+                            gameboard.addMove(squareId, player2.marker)
+                        squareElement.textContent = `${player2.marker}`
+                        
+                        this.checkWin();
+                            }
 
+                            if (gameboardLength === 7) {
+                                gameboard.addMove(squareId, player1.marker)
+                            squareElement.textContent = `${player1.marker}`
+                            
+                            this.checkWin();
+                                }
 
-
-
+                                if (gameboardLength === 8) {
+                                    gameboard.addMove(squareId, player2.marker)
+                                squareElement.textContent = `${player2.marker}`
+                                
+                                this.checkWin();
+                                    }
+                                    if (gameboardLength === 9) {
+                                        gameboard.addMove(squareId, player1.marker)
+                                    squareElement.textContent = `${player1.marker}`
+                                    
+                                    this.checkWin();
+                                        }
 
 
 }))
@@ -259,6 +280,7 @@ gameboardStructure[i][2] === player1.marker) {
     this.updateScoreboard()
     
 }
+
 }
 // check columns for 3 in a row 
 for (let i = 0; i < 3; i++) {
@@ -345,7 +367,9 @@ if (gameboardStructure[0][2] === player2.marker &&
         
     }
 
-
+else {
+    return alert('It is a tie!')
+}
 
 
 
@@ -450,9 +474,7 @@ const form = document.getElementById('my-form')
 if (PlayerHub.getPlayer(1)) {
 
     form.reset();
-    // closeDialog();
-
-    // remove form dialog from dom
+        // remove form dialog from dom
     const formDialog = document.getElementById('my-dialog')
     document.body.removeChild(formDialog)
 
