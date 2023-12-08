@@ -155,22 +155,22 @@ squareElement.textContent = `${player1.marker}`
                     this.checkWin();
                         }
                         if (gameboardLength === 6) {
-                            gameboard.addMove(squareId, player2.marker)
-                        squareElement.textContent = `${player2.marker}`
+                            gameboard.addMove(squareId, player1.marker)
+                        squareElement.textContent = `${player1.marker}`
                         
                         this.checkWin();
                             }
 
                             if (gameboardLength === 7) {
-                                gameboard.addMove(squareId, player1.marker)
-                            squareElement.textContent = `${player1.marker}`
+                                gameboard.addMove(squareId, player2.marker)
+                            squareElement.textContent = `${player2.marker}`
                             
                             this.checkWin();
                                 }
 
                                 if (gameboardLength === 8) {
-                                    gameboard.addMove(squareId, player2.marker)
-                                squareElement.textContent = `${player2.marker}`
+                                    gameboard.addMove(squareId, player1.marker)
+                                squareElement.textContent = `${player1.marker}`
                                 
                                 this.checkWin();
                                     }
@@ -367,13 +367,15 @@ if (gameboardStructure[0][2] === player2.marker &&
         
     }
 
-else {
-    return alert('It is a tie!')
-}
-
-
-
+this.checkTie();
     },
+checkTie: function() {
+if (gameboard.getAllMoves().length === 9) {
+    alert('It is a tie!')
+}
+},
+
+
     getSingleMove: function(index) {
 return ranksAndFilesAndMarker[index];
     },
