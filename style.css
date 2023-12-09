@@ -81,18 +81,29 @@ border: 5px solid pink;
     height: 40%;
     width: 50%;
     font-size: 2rem;
+    background-color: yellowgreen;
+    color: black;
+    outline: none;
+    border-radius: 10px;
+}
+#play-again:hover {
+background-color: black;
+color: yellowgreen;
+border: 2px solid yellowgreen;
+box-shadow: 10px 3px 3px 3px yellowgreen;
 }
 
 #start-game-dialog {
-    height: 60vh;
-    width: 50vw;
-    background-color: black;
-    border: 3px solid yellowgreen;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+    
     border-radius: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
-
+backdrop-filter: blur(25px);
+z-index: 999;
 
 }
 #start-game-dialog button {
@@ -102,25 +113,115 @@ border: 5px solid pink;
     font-size: 3rem;
     color: yellowgreen;
 border: 3px solid yellowgreen;
+border-radius: 20px;
+outline: none;
+
 }
+#start-game-dialog button:hover {
+    background-color: yellowgreen;
+    color: black;
+    cursor: pointer;
+    
+}
+
 #my-dialog {
-    height: 60vh;
-    width: 50vw;
-    background-color: black;
-    border: 3px solid yellowgreen;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+    /* border: 3px solid yellowgreen; */
     border-radius: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     color: white;
-    
+backdrop-filter: blur(20px);
 }
 .form-control-wrapper {
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
+row-gap: 20px;    
 }
 #my-dialog h2 {
     font-size: 3rem;
     text-align: center;
+    text-transform: uppercase;
+}
+#wrapper-2 {
+    margin-top: 40px;
+}
+.form-control-wrapper label {
+    font-size: 2rem;
+}
+
+.form-control-wrapper input {
+    background-color: black;
+    border-color: yellowgreen;
+    outline: none;
+    font-size: 2rem;
+    color: yellowgreen;
+    height: 3rem;
+}
+
+
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    background-clip: content-box;
+    border: 5px solid yellowgreen;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    outline: none;
+    cursor: pointer;
+
+}
+input[type="radio"]:checked::before {
+content: "";
+position: absolute;
+top: 3px;
+left: 3px;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background-color: yellowgreen;
+}
+#wrapper-2 label {
+    color: white;
+    cursor: pointer;
+    font-size: 42px;
+}
+input[type="radio"]:hover {
+    border-color: black;
+}
+input[type="radio"]:focus {
+outline: none;
+box-shadow: 0 0 9px 9px #999;
+
+}
+#my-dialog button {
+    height: 10vh;
+    width: 15vw;
+    background-color: black;
+    font-size: 3rem;
+    color: yellowgreen;
+border: 3px solid yellowgreen;
+border-radius: 20px;
+outline: none;
+
+}
+#my-dialog button:hover {
+    background-color: yellowgreen;
+    color: black;
+    border-color: black;
+}
+#submit-btn-wrapper {
+display: flex;
+justify-content: center;
+margin-top: 20px;
 }
