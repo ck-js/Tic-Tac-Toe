@@ -427,6 +427,11 @@ function createPlayer(name, marker) {
 const Gameflow = (function() {
 
 return {
+// function to restart game
+restart: function() {
+    location.reload();
+    
+            },
 
     // function to play again 
     playAgain: function() {
@@ -603,10 +608,3 @@ gameboard.updateScoreboard();
 
 
 // copy playAgain function as global scope
-function playAgain() {
-    gameboard.increaseRoundCounter();
-    gameboard.clearGameboard();
-    
-
-            
-        }

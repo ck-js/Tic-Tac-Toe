@@ -8,9 +8,16 @@
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3,1fr);
-    
+padding: 50px;    
 }
-
+@media (max-width: 800px) {
+    .gameboard-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 100px;
+    }
+}
+   
 
 
 .gameboard-output {
@@ -22,8 +29,7 @@
     grid-template-rows: repeat(3,1fr);
     grid-template-columns: repeat(3,1fr);
 grid-gap: 20px;
-
-    border: 10px solid white;
+    border: 5px solid white;
 
 }
 .gameboard-ranks-files {
@@ -32,19 +38,18 @@ display: flex;
     justify-content: center;
     align-items: center;
     font-size: 5em;
-
+cursor: pointer;
 }
 
 #scoreboard {
     grid-row: 1;
     grid-column: 2/4;
-    
     font-size: 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    border: 5px solid white;
+    /* border: 5px solid white; */
     
     
 }
@@ -62,22 +67,25 @@ display: flex;
     grid-row: 2;
     text-align: center;
     font-size: 2rem;
-    border: 5px solid white;
+    /* border: 5px solid white; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
 }
-#play-again-container {
+#play-again-restart-container {
     grid-column: 2/4;
     grid-row: 3;
 display: flex;
 justify-content: center;
 align-items: center;
-border: 5px solid pink;
+/* border: 5px solid pink; */
+flex-direction: column;
+row-gap: 2vw;
 }
 #play-again {
+    text-transform: uppercase;
     height: 40%;
     width: 50%;
     font-size: 2rem;
@@ -85,13 +93,36 @@ border: 5px solid pink;
     color: black;
     outline: none;
     border-radius: 10px;
+    cursor: pointer;
+    
 }
 #play-again:hover {
 background-color: black;
 color: yellowgreen;
 border: 2px solid yellowgreen;
 box-shadow: 10px 3px 3px 3px yellowgreen;
+
 }
+
+#restart {
+    text-transform: uppercase;
+    height: 40%;
+    width: 50%;
+    font-size: 2rem;
+    background-color: yellowgreen;
+    color: black;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#restart:hover {
+background-color: black;
+color: yellowgreen;
+border: 2px solid yellowgreen;
+box-shadow: 10px 3px 3px 3px yellowgreen;
+}
+
+
 
 #start-game-dialog {
     height: 100vh;
