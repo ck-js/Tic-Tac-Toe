@@ -1,8 +1,16 @@
 :root {
     background-color: black;
     color: white;
+    font-family: cursive;
 
 }
+button {
+    font-family: monospace;
+    font-weight: 800;
+}
+
+
+
 
 .gameboard-container {
     display: grid;
@@ -255,4 +263,10 @@ outline: none;
 display: flex;
 justify-content: center;
 margin-top: 20px;
+}
+
+.current-turn {
+    border: 6px solid yellowgreen;
+    padding: 20px;
+    border-radius: 3px;
 }

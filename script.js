@@ -105,6 +105,8 @@ renderDOM: function() {
 const body = document.body;
 const gameboardOutput =document.querySelector('.gameboard-output')
 const gameboardSquares = document.querySelectorAll('.gameboard-ranks-files')
+const p1NavName = document.getElementById('player-1-nav-name')
+const p2NavName = document.getElementById('player-2-nav-name')
 
 // add loop to iterate over all gameboard squares
 window.addEventListener('DOMContentLoaded', event => {
@@ -119,8 +121,13 @@ gameboardSquare.addEventListener('click', (event => {
 // determine whose turn it is currently
     if (gameboardLength === 0) {
 
+        // add player 1 marker and update DOM 
     gameboard.addMove(squareId, player1.marker)
 squareElement.textContent = `${player1.marker}`
+
+p1NavName.classList.remove('current-turn')
+p2NavName.classList.add('current-turn')
+
 
     }
     if (gameboardLength === 1) {
@@ -128,56 +135,82 @@ squareElement.textContent = `${player1.marker}`
         gameboard.addMove(squareId, player2.marker)
     squareElement.textContent = `${player2.marker}`
     
-        }
+    p1NavName.classList.add('current-turn')
+    p2NavName.classList.remove('current-turn')
+    }
+        
         if (gameboardLength === 2) {
 
             gameboard.addMove(squareId, player1.marker)
         squareElement.textContent = `${player1.marker}`
-        
+
+        p1NavName.classList.remove('current-turn')
+        p2NavName.classList.add('current-turn')
+
             }
             if (gameboardLength === 3) {
         
                 gameboard.addMove(squareId, player2.marker)
             squareElement.textContent = `${player2.marker}`
             
+    
+            p1NavName.classList.add('current-turn')
+            p2NavName.classList.remove('current-turn')
                 }
                 if (gameboardLength === 4) {
 
                     gameboard.addMove(squareId, player1.marker)
                 squareElement.textContent = `${player1.marker}`
-                
+            
+                p1NavName.classList.remove('current-turn')
+                p2NavName.classList.add('current-turn')
+
                 this.checkWin();
                     }
                     if (gameboardLength === 5) {
                         gameboard.addMove(squareId, player2.marker)
                     squareElement.textContent = `${player2.marker}`
+        
                     
+        p1NavName.classList.add('current-turn')
+        p2NavName.classList.remove('current-turn')
                     this.checkWin();
                         }
                         if (gameboardLength === 6) {
                             gameboard.addMove(squareId, player1.marker)
                         squareElement.textContent = `${player1.marker}`
-                        
+        
+                        p1NavName.classList.remove('current-turn')
+                        p2NavName.classList.add('current-turn')
+
                         this.checkWin();
                             }
 
                             if (gameboardLength === 7) {
                                 gameboard.addMove(squareId, player2.marker)
                             squareElement.textContent = `${player2.marker}`
+        
                             
+        p1NavName.classList.add('current-turn')
+        p2NavName.classList.remove('current-turn')
                             this.checkWin();
                                 }
 
                                 if (gameboardLength === 8) {
                                     gameboard.addMove(squareId, player1.marker)
                                 squareElement.textContent = `${player1.marker}`
+
+                                p1NavName.classList.add('current-turn')
                                 
+
                                 this.checkWin();
                                     }
                                     if (gameboardLength === 9) {
                                         gameboard.addMove(squareId, player1.marker)
                                     squareElement.textContent = `${player1.marker}`
+        
                                     
+        
                                     this.checkWin();
                                         }
 
@@ -370,7 +403,7 @@ if (gameboardStructure[0][2] === player2.marker &&
 this.checkTie();
     },
 checkTie: function() {
-if (gameboard.getAllMoves().length === 9) {
+if (gameboard.getAllMoves().length > 8) {
     alert('It is a tie!')
 }
 },
@@ -546,9 +579,6 @@ player2NavElement.textContent = `${PlayerHub.getPlayer(1).name}: ${PlayerHub.get
 
 
 
-
-
-
 }
 
 })();
@@ -607,4 +637,4 @@ gameboard.updateNav();
 gameboard.updateScoreboard();
 
 
-// copy playAgain function as global scope
+
